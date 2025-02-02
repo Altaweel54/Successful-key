@@ -48,11 +48,18 @@
         button:hover {
             background-color: #128C7E;
         }
+        .note {
+            color: red;
+            text-align: center;
+            margin: 15px 0;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>استمارة قبول عضو في فريق "مفتاح النجاح"</h1>
+        <p class="note">بعد الضغط على إرسال سيتم فتح واتساب، يرجى إرسال ملف الهوية/الجواز يدويًا في نفس المحادثة</p>
 
         <form id="registrationForm">
             <label for="الاسم_الكامل">الاسم الكامل:</label>
@@ -74,15 +81,15 @@
             <input type="text" id="العنوان" name="العنوان" required>
 
             <label>هل لديك خبرة سابقة في المجال؟</label>
-            <input type="radio" id="خبرة_نعم" name="خبرة" value="نعم">
+            <input type="radio" id="خبرة_نعم" name="خبرة" value="نعم" required>
             <label for="خبرة_نعم">نعم</label>
-            <input type="radio" id="خبرة_لا" name="خبرة" value="لا">
+            <input type="radio" id="خبرة_لا" name="خبرة" value="لا" required>
             <label for="خبرة_لا">لا</label>
 
             <label>هل لديك مهارات في الترويج والتسويق؟</label>
-            <input type="radio" id="مهارات_نعم" name="مهارات" value="نعم">
+            <input type="radio" id="مهارات_نعم" name="مهارات" value="نعم" required>
             <label for="مهارات_نعم">نعم</label>
-            <input type="radio" id="مهارات_لا" name="مهارات" value="لا">
+            <input type="radio" id="مهارات_لا" name="مهارات" value="لا" required>
             <label for="مهارات_لا">لا</label>
 
             <label for="فيسبوك">حسابك على فيسبوك (إن وجد):</label>
@@ -111,44 +118,53 @@
         document.getElementById('registrationForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // جمع البيانات من الحقول باستخدام أسماء النصوص
-            const الاسم_الكامل = document.getElementById('الاسم_الكامل').value;
-            const تاريخ_الميلاد = document.getElementById('تاريخ_الميلاد').value;
-            const رقم_الهاتف = document.getElementById('رقم_الهاتف').value;
-            const البريد_الإلكتروني = document.getElementById('البريد_الإلكتروني').value || 'غير متوفر';
-            const العنوان = document.getElementById('العنوان').value;
-            const خبرة = document.querySelector('input[name="خبرة"]:checked')?.value || 'غير محدد';
-            const مهارات = document.querySelector('input[name="مهارات"]:checked')?.value || 'غير محدد';
-            const فيسبوك = document.getElementById('فيسبوك').value || 'غير متوفر';
-            const واتساب = document.getElementById('واتساب').value || 'غير متوفر';
-            const تيليجرام = document.getElementById('تيليجرام').value || 'غير متوفر';
-            const منصات_أخرى = document.getElementById('منصات_أخرى').value || 'غير متوفر';
-            const اسم_المزكي = document.getElementById('اسم_المزكي').value || 'غير متوفر';
-            const رقم_المزكي = document.getElementById('رقم_المزكي').value || 'غير متوفر';
+            // جمع البيانات الأساسية
+            const formData = {
+                الاسم_الكامل: document.getElementById('الاسم_الكامل').value,
+                تاريخ_الميلاد: document.getElementById('تاريخ_الميلاد').value,
+                رقم_الهاتف: document.getElementById('رقم_الهاتف').value,
+                البريد_الإلكتروني: document.getElementById('البريد_الإلكتروني').value || 'غير متوفر',
+                العنوان: document.getElementById('العنوان').value,
+                خبرة: document.querySelector('input[name="خبرة"]:checked')?.value || 'غير محدد',
+                مهارات: document.querySelector('input[name="مهارات"]:checked')?.value || 'غير محدد',
+                فيسبوك: document.getElementById('فيسبوك').value || 'غير متوفر',
+                واتساب: document.getElementById('واتساب').value || 'غير متوفر',
+                تيليجرام: document.getElementById('تيليجرام').value || 'غير متوفر',
+                منصات_أخرى: document.getElementById('منصات_أخرى').value || 'غير متوفر',
+                اسم_المزكي: document.getElementById('اسم_المزكي').value || 'غير متوفر',
+                رقم_المزكي: document.getElementById('رقم_المزكي').value || 'غير متوفر'
+            };
 
-            // إنشاء رسالة WhatsApp
+            // إنشاء رسالة واتساب
             const الرسالة = `
-                أنا *${الاسم_الكامل}* أطلب انضمامي إلى الفريق وأتعهد بأن أتحمل كامل المسؤولية.
-                بياناتي:
-                - تاريخ الميلاد: ${تاريخ_الميلاد}
-                - رقم الهاتف: ${رقم_الهاتف}
-                - البريد الإلكتروني: ${البريد_الإلكتروني}
-                - العنوان: ${العنوان}
-                - هل لديك خبرة سابقة في المجال؟: ${خبرة}
-                - هل لديك مهارات في الترويج والتسويق؟: ${مهارات}
-                - حسابات التواصل الاجتماعي:
-                    - فيسبوك: ${فيسبوك}
-                    - واتساب: ${واتساب}
-                    - تيليجرام: ${تيليجرام}
-                    - منصات أخرى: ${منصات_أخرى}
-                - اسم الشخص الذي يزكيك: ${اسم_المزكي}
-                - رقم هاتف المُزكي: ${رقم_المزكي}
+            *طلب انضمام جديد لفريق مفتاح النجاح*
+            
+            الاسم الكامل: ${formData.الاسم_الكامل}
+            تاريخ الميلاد: ${formData.تاريخ_الميلاد}
+            رقم الهاتف: ${formData.رقم_الهاتف}
+            البريد الإلكتروني: ${formData.البريد_الإلكتروني}
+            العنوان: ${formData.العنوان}
+            
+            الخبرة السابقة: ${formData.خبرة}
+            المهارات التسويقية: ${formData.مهارات}
+            
+            *حسابات التواصل:*
+            فيسبوك: ${formData.فيسبوك}
+            واتساب: ${formData.واتساب}
+            تيليجرام: ${formData.تيليجرام}
+            منصات أخرى: ${formData.منصات_أخرى}
+            
+            *معلومات التزكية:*
+            المزكي: ${formData.اسم_المزكي}
+            رقم المزكي: ${formData.رقم_المزكي}
+            
+            *يرجى إرسال ملف الهوية/الجواز المرفق في هذه المحادثة*
             `;
 
-            // إرسال البيانات عبر WhatsApp
-            const رقم_الواتساب = '967714500258'; // رقم الواتساب اليمني
-            const الرابط = `https://wa.me/${رقم_الواتساب}?text=${encodeURIComponent(الرسالة)}`;
-            window.open(الرابط, '_blank');
+            // إرسال عبر واتساب
+            const رقم_الواتساب = '967714500258'; // رقم اليمن مع مفتاح الدولة
+            const رابط_الواتساب = `https://wa.me/${رقم_الواتساب}?text=${encodeURIComponent(الرسالة)}`;
+            window.open(رابط_الواتساب, '_blank');
         });
     </script>
 </body>
