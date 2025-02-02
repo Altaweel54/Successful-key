@@ -2,181 +2,154 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#ffffff">
-    <title>استمارة قبول عضو في فريق "مفتاح النجاح"</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استمارة قبول عضو في فريق مفتاح النجاح</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            background-color: #f4f4f9;
+            margin: 0;
             padding: 20px;
-            background-color: #f9f9f9;
         }
-        h1, h2 {
-            color: #333;
-        }
-        form {
-            background-color: #fff;
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
         }
         label {
             display: block;
             margin-top: 10px;
             font-weight: bold;
         }
-        input[type="text"], input[type="date"], input[type="email"], input[type="file"] {
+        input[type="text"], input[type="date"], input[type="file"], textarea {
             width: 100%;
             padding: 8px;
             margin-top: 5px;
             border: 1px solid #ccc;
             border-radius: 4px;
-        }
-        textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: vertical;
-        }
-        input[type="checkbox"] {
-            margin-top: 10px;
-        }
-        .signature {
-            margin-top: 20px;
         }
         button {
-            margin-top: 20px;
+            display: block;
+            margin: 20px auto;
             padding: 10px 20px;
-            background-color: #28a745;
+            background-color: #25D366;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            width: 100%;
         }
         button:hover {
-            background-color: #218838;
-        }
-        .whatsapp-link {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .whatsapp-link a {
-            color: #25D366;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .whatsapp-link a:hover {
-            text-decoration: underline;
+            background-color: #128C7E;
         }
     </style>
 </head>
 <body>
-    <h1>استمارة قبول عضو في فريق "مفتاح النجاح"</h1>
-    <form id="successKeyForm">
-        <h2>البيانات الشخصية:</h2>
-        <label for="fullName">الاسم الكامل:</label>
-        <input type="text" id="fullName" name="fullName" placeholder="أدخل الاسم الكامل">
+    <div class="container">
+        <h1>استمارة قبول عضو في فريق "مفتاح النجاح"</h1>
 
-        <label for="dob">تاريخ الميلاد:</label>
-        <input type="date" id="dob" name="dob">
+        <form id="registrationForm">
+            <label for="الاسم_الكامل">الاسم الكامل:</label>
+            <input type="text" id="الاسم_الكامل" name="الاسم_الكامل" required>
 
-        <label for="idPassport">رقم الهوية/الجواز:</label>
-        <input type="text" id="idPassport" name="idPassport" placeholder="أدخل رقم الهوية/الجواز">
+            <label for="تاريخ_الميلاد">تاريخ الميلاد:</label>
+            <input type="date" id="تاريخ_الميلاد" name="تاريخ_الميلاد" required>
 
-        <label for="idFile">صورة الهوية/الجواز (مرفق PDF):</label>
-        <input type="file" id="idFile" name="idFile" accept=".pdf">
+            <label for="صورة_الهوية">صورة الهوية/الجواز (مرفق PDF):</label>
+            <input type="file" id="صورة_الهوية" name="صورة_الهوية" accept=".pdf" required>
 
-        <label for="phone">رقم الهاتف:</label>
-        <input type="text" id="phone" name="phone" placeholder="أدخل رقم الهاتف">
+            <label for="رقم_الهاتف">رقم الهاتف:</label>
+            <input type="text" id="رقم_الهاتف" name="رقم_الهاتف" required>
 
-        <label for="email">البريد الإلكتروني (إن وجد):</label>
-        <input type="email" id="email" name="email" placeholder="أدخل البريد الإلكتروني">
+            <label for="البريد_الإلكتروني">البريد الإلكتروني (إن وجد):</label>
+            <input type="text" id="البريد_الإلكتروني" name="البريد_الإلكتروني">
 
-        <label for="address">العنوان:</label>
-        <textarea id="address" name="address" rows="3" placeholder="أدخل العنوان"></textarea>
+            <label for="العنوان">العنوان:</label>
+            <input type="text" id="العنوان" name="العنوان" required>
 
-        <h2>بيانات العضوية:</h2>
-        <label>هل لديك خبرة سابقة في المجال؟</label>
-        <input type="checkbox" id="experienceYes" name="experience" value="نعم">
-        <label for="experienceYes">نعم</label>
-        <input type="checkbox" id="experienceNo" name="experience" value="لا">
-        <label for="experienceNo">لا</label>
+            <label>هل لديك خبرة سابقة في المجال؟</label>
+            <input type="radio" id="خبرة_نعم" name="خبرة" value="نعم">
+            <label for="خبرة_نعم">نعم</label>
+            <input type="radio" id="خبرة_لا" name="خبرة" value="لا">
+            <label for="خبرة_لا">لا</label>
 
-        <label>هل لديك مهارات في الترويج والتسويق؟</label>
-        <input type="checkbox" id="skillsYes" name="skills" value="نعم">
-        <label for="skillsYes">نعم</label>
-        <input type="checkbox" id="skillsNo" name="skills" value="لا">
-        <label for="skillsNo">لا</label>
+            <label>هل لديك مهارات في الترويج والتسويق؟</label>
+            <input type="radio" id="مهارات_نعم" name="مهارات" value="نعم">
+            <label for="مهارات_نعم">نعم</label>
+            <input type="radio" id="مهارات_لا" name="مهارات" value="لا">
+            <label for="مهارات_لا">لا</label>
 
-        <label for="facebook">حساباتك على وسائل التواصل الاجتماعي (إن وجدت):</label>
-        <input type="text" id="facebook" name="facebook" placeholder="فيسبوك">
-        <input type="text" id="whatsapp" name="whatsapp" placeholder="واتساب">
-        <input type="text" id="telegram" name="telegram" placeholder="تيليجرام">
-        <input type="text" id="otherPlatforms" name="otherPlatforms" placeholder="منصات أخرى">
+            <label for="فيسبوك">حسابك على فيسبوك (إن وجد):</label>
+            <input type="text" id="فيسبوك" name="فيسبوك">
 
-        <h2>التزكية:</h2>
-        <label for="referrerName">اسم الشخص الذي يزكيك (إن وجد):</label>
-        <input type="text" id="referrerName" name="referrerName" placeholder="أدخل اسم المُزكي">
+            <label for="واتساب">حسابك على واتساب (إن وجد):</label>
+            <input type="text" id="واتساب" name="واتساب">
 
-        <label for="referrerPhone">رقم هاتف المُزكي:</label>
-        <input type="text" id="referrerPhone" name="referrerPhone" placeholder="أدخل رقم هاتف المُزكي">
+            <label for="تيليجرام">حسابك على تيليجرام (إن وجد):</label>
+            <input type="text" id="تيليجرام" name="تيليجرام">
 
-        <h2>الالتزامات:</h2>
-        <input type="checkbox" id="commitment1" name="commitments" value="فاعل">
-        <label for="commitment1">أتعهد بأن أكون عضوًا فاعلًا ومستعدًا للعمل بجدية.</label><br>
+            <label for="منصات_أخرى">منصات أخرى (إن وجدت):</label>
+            <input type="text" id="منصات_أخرى" name="منصات_أخرى">
 
-        <input type="checkbox" id="commitment2" name="commitments" value="شفافية">
-        <label for="commitment2">ألتزم بالمصداقية والشفافية في جميع التعاملات.</label><br>
+            <label for="اسم_المزكي">اسم الشخص الذي يزكيك (إن وجد):</label>
+            <input type="text" id="اسم_المزكي" name="اسم_المزكي">
 
-        <input type="checkbox" id="commitment3" name="commitments" value="مسؤولية">
-        <label for="commitment3">أتحمل مسؤولية العملاء الذين سيأتون عن طريقي.</label><br>
+            <label for="رقم_المزكي">رقم هاتف المُزكي:</label>
+            <input type="text" id="رقم_المزكي" name="رقم_المزكي">
 
-        <input type="checkbox" id="commitment4" name="commitments" value="قوانين">
-        <label for="commitment4">أوافق على جميع القوانين والاستراتيجيات الموضحة في "مفتاح النجاح".</label><br>
+            <button type="submit">إرسال الطلب</button>
+        </form>
+    </div>
 
-        <input type="checkbox" id="commitment5" name="commitments" value="تفويض">
-        <label for="commitment5">أفوض الفريق بالتحقق من صحة بياناتي عند الحاجة.</label><br>
-
-        <div class="signature">
-            <label for="signatureDate">التاريخ:</label>
-            <input type="date" id="signatureDate" name="signatureDate">
-
-            <label for="signature">التوقيع:</label>
-            <textarea id="signature" name="signature" rows="3" placeholder="أدخل توقيعك هنا"></textarea>
-        </div>
-
-        <button type="button" onclick="generatePDF()">إرسال الاستمارة</button>
-    </form>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
-        function generatePDF() {
-            const element = document.getElementById('successKeyForm');
-            const opt = {
-                margin: 10,
-                filename: 'استمارة_قبول_عضو.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-            html2pdf().set(opt).from(element).save().then(() => {
-                sendToWhatsApp();
-            });
-        }
+            // جمع البيانات من الحقول باستخدام أسماء النصوص
+            const الاسم_الكامل = document.getElementById('الاسم_الكامل').value;
+            const تاريخ_الميلاد = document.getElementById('تاريخ_الميلاد').value;
+            const رقم_الهاتف = document.getElementById('رقم_الهاتف').value;
+            const البريد_الإلكتروني = document.getElementById('البريد_الإلكتروني').value || 'غير متوفر';
+            const العنوان = document.getElementById('العنوان').value;
+            const خبرة = document.querySelector('input[name="خبرة"]:checked')?.value || 'غير محدد';
+            const مهارات = document.querySelector('input[name="مهارات"]:checked')?.value || 'غير محدد';
+            const فيسبوك = document.getElementById('فيسبوك').value || 'غير متوفر';
+            const واتساب = document.getElementById('واتساب').value || 'غير متوفر';
+            const تيليجرام = document.getElementById('تيليجرام').value || 'غير متوفر';
+            const منصات_أخرى = document.getElementById('منصات_أخرى').value || 'غير متوفر';
+            const اسم_المزكي = document.getElementById('اسم_المزكي').value || 'غير متوفر';
+            const رقم_المزكي = document.getElementById('رقم_المزكي').value || 'غير متوفر';
 
-        function sendToWhatsApp() {
-            const whatsappNumber = "967714500258";
-            const message = "تم إكمال استمارة قبول عضو في فريق 'مفتاح النجاح'. المرفقات بصيغة PDF.";
-            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappLink, '_blank');
-        }
+            // إنشاء رسالة WhatsApp
+            const الرسالة = `
+                أنا *${الاسم_الكامل}* أطلب انضمامي إلى الفريق وأتعهد بأن أتحمل كامل المسؤولية.
+                بياناتي:
+                - تاريخ الميلاد: ${تاريخ_الميلاد}
+                - رقم الهاتف: ${رقم_الهاتف}
+                - البريد الإلكتروني: ${البريد_الإلكتروني}
+                - العنوان: ${العنوان}
+                - هل لديك خبرة سابقة في المجال؟: ${خبرة}
+                - هل لديك مهارات في الترويج والتسويق؟: ${مهارات}
+                - حسابات التواصل الاجتماعي:
+                    - فيسبوك: ${فيسبوك}
+                    - واتساب: ${واتساب}
+                    - تيليجرام: ${تيليجرام}
+                    - منصات أخرى: ${منصات_أخرى}
+                - اسم الشخص الذي يزكيك: ${اسم_المزكي}
+                - رقم هاتف المُزكي: ${رقم_المزكي}
+            `;
+
+            // إرسال البيانات عبر WhatsApp
+            const رقم_الواتساب = '714500258'; // رقم الواتساب اليمني
+            const الرابط = `https://wa.me/${رقم_الواتساب}?text=${encodeURIComponent(الرسالة)}`;
+            window.open(الرابط, '_blank');
+        });
     </script>
 </body>
 </html>
